@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:layout_margin="16dp"
+        android:id="@+id/text_question"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Is this where the question will go?" />
+
+    <ProgressBar
+        android:layout_marginTop="16dp"
+        android:id="@+id/progress_indicator"
+        style="@android:style/Widget.ProgressBar.Horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="12dp"
+        android:indeterminate="false"
+        app:layout_constraintTop_toBottomOf="@id/text_question"
+        tools:progress="25" />
+
+    <Button
+        android:id="@+id/button_answer_top_start"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@id/button_answer_bottom_start"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/progress_indicator"
+        app:layout_constraintWidth_percent="0.5"
+        tools:text="Answer 1" />
+
+    <Button
+        android:id="@+id/button_answer_top_end"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@id/button_answer_bottom_end"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/progress_indicator"
+        app:layout_constraintWidth_percent="0.5"
+        tools:text="Answer 2" />
+
+    <Button
+        android:id="@+id/button_answer_bottom_start"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/button_answer_top_start"
+        app:layout_constraintWidth_percent="0.5"
+        tools:text="Answer 3" />
+
+    <Button
+        android:id="@+id/button_answer_bottom_end"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/button_answer_top_end"
+        app:layout_constraintWidth_percent="0.5"
+        tools:text="Answer 4" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
