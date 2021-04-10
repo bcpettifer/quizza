@@ -1,4 +1,4 @@
-package com.punkbytes.quizza.network
+package com.punkbytes.quizza.data.remote
 
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit

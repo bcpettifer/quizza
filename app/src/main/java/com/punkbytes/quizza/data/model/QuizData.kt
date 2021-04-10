@@ -1,4 +1,4 @@
-package com.punkbytes.quizza.data
+package com.punkbytes.quizza.data.model
 
 data class QuizData(
     val questionAmount: Int,

@@ -4,7 +4,7 @@ import android.content.Context
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import androidx.constraintlayout.widget.ConstraintLayout
-import com.punkbytes.quizza.data.QuizData
+import com.punkbytes.quizza.data.model.QuizData
 import com.punkbytes.quizza.databinding.ViewResultsBinding
 
 class ResultsView(context: Context, attrs: AttributeSet?) : ConstraintLayout(context, attrs) {
