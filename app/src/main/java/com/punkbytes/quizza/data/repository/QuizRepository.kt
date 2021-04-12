@@ -8,13 +8,13 @@ import com.punkbytes.quizza.data.remote.ApiTriviaListResult
 import com.punkbytes.quizza.data.remote.OpenTriviaDbWebservice
 import com.punkbytes.quizza.data.remote.ServiceBuilder
 
-class QuizRepository {
+open class QuizRepository {
     private val webservice: OpenTriviaDbWebservice = ServiceBuilder.buildService(
         OpenTriviaDbWebservice::class.java
     )
     private val cache = QuizCache()
 
-    suspend fun getQuestionAsync(questionNumber: Int): QuizQuestion {
+    open suspend fun getQuestionAsync(questionNumber: Int): QuizQuestion {
         val cached = cache.getQuestion(questionNumber)
         if (cached != null) {
             return cached
@@ -25,7 +25,7 @@ class QuizRepository {
         return questions[questionNumber]
     }
 
-    fun getQuestion(questionNumber: Int): QuizQuestion {
+    open fun getQuestion(questionNumber: Int): QuizQuestion {
         val cached = cache.getQuestion(questionNumber)
         if (cached != null) {
             return cached

@@ -1,9 +1,9 @@
 package com.punkbytes.quizza
 
-import com.punkbytes.quizza.data.TriviaData
+import com.punkbytes.quizza.data.remote.ApiTriviaData
 
 object TestData {
-    val triviaDbData = TriviaData(
+    val triviaDbData = ApiTriviaData(
         category = "Test Data",
         type = "General Knowledge",
         difficulty = "Easy",
