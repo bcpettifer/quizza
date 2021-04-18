@@ -3,7 +3,9 @@ package com.punkbytes.quizza.data.model
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.punkbytes.quizza.data.repository.QuizRepository
+import kotlinx.coroutines.launch
 
 class QuizQuestionViewModel(
     questionNumber: Int,
@@ -15,6 +17,8 @@ class QuizQuestionViewModel(
     val question: LiveData<QuizQuestion> = _question
 
     init {
-        _question.value = repository.getQuestion(index)
+        viewModelScope.launch {
+            _question.value = repository.getQuestionAsync(index)
+        }
     }
 }

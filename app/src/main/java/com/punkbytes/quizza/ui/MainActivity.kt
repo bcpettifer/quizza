@@ -6,7 +6,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.punkbytes.quizza.data.model.QuizData
 import com.punkbytes.quizza.data.model.QuizQuestionViewModel
-import com.punkbytes.quizza.data.repository.QuizRepository
+import com.punkbytes.quizza.data.repository.OpenTriviaQuizRepository
 import com.punkbytes.quizza.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -23,7 +23,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun initialiseQuiz() {
         val questionCount = 10 // Hardcoded for now
-        val repository = QuizRepository()
+        val repository = OpenTriviaQuizRepository()
         var triviaIndex = 0
         var correctAnswerCount = 0
         val viewModel = QuizQuestionViewModel(triviaIndex, repository)

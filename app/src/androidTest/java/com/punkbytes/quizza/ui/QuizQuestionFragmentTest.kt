@@ -5,23 +5,29 @@ import androidx.fragment.app.testing.launchFragmentInContainer
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.assertion.ViewAssertions.matches
-import androidx.test.espresso.matcher.ViewMatchers.*
+import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
+import androidx.test.espresso.matcher.ViewMatchers.withId
+import androidx.test.espresso.matcher.ViewMatchers.withText
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.punkbytes.quizza.R
 import com.punkbytes.quizza.data.model.QuizQuestion
 import com.punkbytes.quizza.data.model.QuizQuestionViewModel
 import com.punkbytes.quizza.data.repository.QuizRepository
 import io.mockk.coEvery
-import io.mockk.every
+import io.mockk.coVerify
 import io.mockk.mockk
-import io.mockk.verify
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.TestCoroutineDispatcher
 import kotlinx.coroutines.test.resetMain
 import kotlinx.coroutines.test.runBlockingTest
 import kotlinx.coroutines.test.setMain
-import org.junit.*
+import org.junit.After
+import org.junit.Assert
+import org.junit.Before
+import org.junit.Ignore
+import org.junit.Rule
+import org.junit.Test
 import org.junit.runner.RunWith
 
 @ExperimentalCoroutinesApi
@@ -53,13 +59,13 @@ class QuizQuestionFragmentTest {
             listOf("No-1", "No-2", "No-3")
         )
         val repository = mockk<QuizRepository>()
-        every { repository.getQuestion(any()) } returns question
+        coEvery { repository.getQuestionAsync(any()) } returns question
 
         // act
         val model = QuizQuestionViewModel(0, repository)
 
         // assert
-        verify { repository.getQuestion(0) }
+        coVerify { repository.getQuestionAsync(0) }
         Assert.assertEquals("Test Question", model.question.value?.question!!)
     }
 
@@ -94,8 +100,7 @@ class QuizQuestionFragmentTest {
             listOf("No", "Maybe", "Perhaps")
         )
 
-        val model = QuizQuestionViewModel(0, mockk<QuizRepository>() {
-            every { getQuestion(any()) } returns question
+        val model = QuizQuestionViewModel(0, mockk() {
             coEvery { getQuestionAsync(any()) } returns question
         })
 
